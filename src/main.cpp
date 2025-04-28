@@ -1,6 +1,4 @@
-#include "xcb/connection.h"
-#include "xcb/event.h"
-#include "xcb/window.h"
+#include "panel.h"
 
 #include <stdio.h>
 
@@ -43,11 +41,13 @@ main()
     return 1;
   }
 
-  Xcb::Window panel(connection);
+  // Initial panel configuration goes here
+  Panel panel(connection);
   panel.show();
   panel.setSize(640,480);
   panel.setPosition(300, 300);
   connection.flush();
+
   bool running = true;
   while (connection.isValid() && running) {
     // Maybe polling later?

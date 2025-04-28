@@ -11,7 +11,7 @@ class Connection
     Connection(std::string display = "");
     Connection(const Connection&) = delete;
     Connection& operator=(const Connection&) = delete;
-
+    
     bool isValid();
     bool flush();
 

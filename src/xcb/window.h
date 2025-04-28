@@ -10,11 +10,14 @@ class Window
     Window(const Xcb::Connection& connection);
     void setPosition(uint32_t x, uint32_t y);
     void setSize(uint32_t width, uint32_t height);
+
     void show();
   private:
     // Since we don't own the connection here raw pointer is fine
     xcb_connection_t* m_connection;
-    xcb_window_t m_window;
+
+    // TODO maybe use xcb_drawable_t instead?
+    xcb_drawable_t m_window;
 };
 
 } // namespace Xcb
