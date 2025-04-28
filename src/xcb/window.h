@@ -12,6 +12,7 @@ class Window
     void setSize(uint32_t width, uint32_t height);
 
     void show();
+
   private:
     // Since we don't own the connection here raw pointer is fine
     xcb_connection_t* m_connection;

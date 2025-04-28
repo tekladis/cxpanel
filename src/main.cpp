@@ -44,14 +44,14 @@ main()
   // Initial panel configuration goes here
   Panel panel(connection);
   panel.show();
-  panel.setSize(640,480);
+  panel.setSize(640, 480);
   panel.setPosition(300, 300);
   connection.flush();
 
   bool running = true;
   while (connection.isValid() && running) {
     // Maybe polling later?
-    Xcb::Event event {connection.waitForEvent()};
+    Xcb::Event event{ connection.waitForEvent() };
   }
   return 0;
 }

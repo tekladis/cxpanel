@@ -11,7 +11,7 @@ class Connection
     Connection(std::string display = "");
     Connection(const Connection&) = delete;
     Connection& operator=(const Connection&) = delete;
-    
+
     bool isValid();
     bool flush();
 
@@ -19,8 +19,9 @@ class Connection
 
   private:
     friend class Window;
-    struct Deleter {
-      void operator()(xcb_connection_t* connection);
+    struct Deleter
+    {
+        void operator()(xcb_connection_t* connection);
     };
     std::unique_ptr<xcb_connection_t, Deleter> m_connection;
 

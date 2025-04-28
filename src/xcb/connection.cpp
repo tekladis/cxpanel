@@ -6,7 +6,8 @@ Xcb::Connection::Connection(std::string display)
 {
 }
 
-void Xcb::Connection::Deleter::operator()(xcb_connection_t* connection)
+void
+Xcb::Connection::Deleter::operator()(xcb_connection_t* connection)
 {
   if (connection) {
     xcb_disconnect(connection);
@@ -31,5 +32,5 @@ Xcb::Connection::flush()
 Xcb::Event
 Xcb::Connection::waitForEvent()
 {
-  return {xcb_wait_for_event(m_connection.get())};
+  return { xcb_wait_for_event(m_connection.get()) };
 }
