@@ -5,7 +5,7 @@
 class Panel : public Xcb::Window
 {
   public:
-    Panel(const Xcb::Connection& connection);
+    Panel(Xcb::Connection& connection);
 };
 
 #endif

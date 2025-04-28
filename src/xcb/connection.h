@@ -12,13 +12,17 @@ class Connection
     Connection(const Connection&) = delete;
     Connection& operator=(const Connection&) = delete;
 
+    // Convenience function
+    xcb_connection_t* get() { return m_connection.get(); }
+
     bool isValid();
     bool flush();
 
     Xcb::Event waitForEvent();
 
+    xcb_atom_t atom(const std::string& atom);
+
   private:
-    friend class Window;
     struct Deleter
     {
         void operator()(xcb_connection_t* connection);

@@ -1,6 +1,6 @@
 #include "panel.h"
 
-Panel::Panel(const Xcb::Connection& connection)
+Panel::Panel(Xcb::Connection& connection)
   : Xcb::Window(connection)
 {
 }
