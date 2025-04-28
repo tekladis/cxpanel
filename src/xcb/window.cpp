@@ -20,6 +20,20 @@ Xcb::Window::Window(const Xcb::Connection& connection) :
       &screen_data->white_pixel);
 }
 
+void Xcb::Window::setPosition(uint32_t x, uint32_t y)
+{
+  uint16_t mask {XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y};
+  uint32_t position[] {x, y};
+  xcb_configure_window(m_connection, m_window, mask, position);
+}
+
+void Xcb::Window::setSize(uint32_t width, uint32_t height)
+{
+  uint16_t mask {XCB_CONFIG_WINDOW_WIDTH | XCB_CONFIG_WINDOW_HEIGHT};
+  uint32_t size[] {width, height};
+  xcb_configure_window(m_connection, m_window, mask, size);
+}
+
 void Xcb::Window::show()
 {
   xcb_map_window(m_connection, m_window);

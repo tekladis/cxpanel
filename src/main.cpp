@@ -45,6 +45,8 @@ main()
 
   Xcb::Window panel(connection);
   panel.show();
+  panel.setSize(640,480);
+  panel.setPosition(300, 300);
   connection.flush();
   bool running = true;
   while (connection.isValid() && running) {

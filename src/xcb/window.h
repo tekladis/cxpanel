@@ -8,7 +8,8 @@ class Window
 {
   public:
     Window(const Xcb::Connection& connection);
-    void resize(int width, int height);
+    void setPosition(uint32_t x, uint32_t y);
+    void setSize(uint32_t width, uint32_t height);
     void show();
   private:
     // Since we don't own the connection here raw pointer is fine
