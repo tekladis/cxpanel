@@ -1,5 +1,7 @@
 #include "xcb/connection.h"
 #include "xcb/event.h"
+#include "xcb/window.h"
+
 #include <stdio.h>
 
 // TODO move this somewhere else eventually
@@ -41,8 +43,12 @@ main()
     return 1;
   }
 
+  Xcb::Window panel(connection);
+  panel.show();
+  connection.flush();
   bool running = true;
   while (connection.isValid() && running) {
+    // Maybe polling later?
     Xcb::Event event {connection.waitForEvent()};
   }
   return 0;

@@ -1,7 +1,26 @@
 #include "window.h"
 
-namespace Xcb {
+// This is possibly poor design?
+Xcb::Window::Window(const Xcb::Connection& connection) :
+  m_connection(connection.m_connection.get())
+{
+  m_window = xcb_generate_id(m_connection);
+  // We pick the default screen here.  Use setScreen after
+  // construction to override
+  const xcb_setup_t* screen_setup = xcb_get_setup(m_connection); 
+  xcb_screen_t* screen_data = xcb_setup_roots_iterator(screen_setup).data;
+  xcb_create_window(m_connection, XCB_COPY_FROM_PARENT,
+      m_window, screen_data->root,
+      0, 0,
+      100, 100,
+      50,
+      XCB_WINDOW_CLASS_INPUT_OUTPUT,
+      screen_data->root_visual,
+      XCB_CW_BACK_PIXEL,
+      &screen_data->white_pixel);
+}
 
-Window::Window() {}
-
-} // namespace Xcb
+void Xcb::Window::show()
+{
+  xcb_map_window(m_connection, m_window);
+}

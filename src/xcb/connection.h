@@ -18,6 +18,7 @@ class Connection
     Xcb::Event waitForEvent();
 
   private:
+    friend class Window;
     struct Deleter {
       void operator()(xcb_connection_t* connection);
     };
