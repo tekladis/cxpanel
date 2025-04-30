@@ -14,12 +14,12 @@ add_executable(${PROJECT_NAME}
   src/xcb/connection.h
   src/xcb/event.h
   src/xcb/window.h
-  src/panel.h
+  src/cxpanel.h
 
   src/xcb/connection.cpp
   src/xcb/event.cpp
   src/xcb/window.cpp
-  src/panel.cpp
+  src/cxpanel.cpp
   src/main.cpp
 )
 

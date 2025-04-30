@@ -1,4 +1,4 @@
-#include "panel.h"
+#include "cxpanel.h"
 
 #include <stdio.h>
 
@@ -42,7 +42,7 @@ main()
   }
 
   // Initial panel configuration goes here
-  Panel panel(connection);
+  CxPanel panel(connection);
   panel.show();
   panel.setSize(640, 480);
   panel.setPosition(300, 300);
